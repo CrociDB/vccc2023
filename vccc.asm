@@ -4,14 +4,12 @@ start:
     push cs
     pop ds
     pop ss
-
-    ; Set 80-25 text mode
     mov ax, 0x0002
     int 0x10
-    mov ax, 0xb800                  ; Segment for the video data
+    mov ax, 0xb800
     mov es, ax
     cld
-    mov di, 0x00                      ; Adds offset to DI
+    mov di, 0x00
     mov bx, 0
     mov cx, 19
 _line:
@@ -37,7 +35,7 @@ _print_0:
     neg ax
 _print:
     push ax
-    mov ax, 0x0f2a                  ; Copies the char to AX
+    mov ax, 0x0f2a
     stosw
     pop ax
     inc ax
@@ -51,6 +49,5 @@ _2:
     add di, 122
     pop cx
     loop _line
-
     times 510-($-$$) db 0x4f
-    db 0x55, 0xaa                   ; bootable signature 
+    db 0x55, 0xaa
