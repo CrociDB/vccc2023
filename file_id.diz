@@ -1,0 +1,22 @@
+Bootable Grid
+
+Author: crocidb
+Category: Christmas Challenge
+System:   IBM PC
+Language: Assembler (NASM)
+Len source code: 691 bytes
+Len exe file:    512 bytes
+Len code only:   622 bytes
+Instructions:
+ This runs on an IBM PC Bootsector. To run it with an emulator (QEMU):
+  `qemu-system-i386 -fda vccc.bin`
+ Also possible to flash `vccc.bin` file into a usb-drive (or a Floppy Disk)
+ and boot your IBM PC with it.
+Description:
+ Quite possibly the most naive way, it loops per line and print `*` everytime 
+ the modulo of counter (`AX`) hits the assigned value (`BX`). The counter is
+ signed and starts at `-3` and goes to `3`. It runs on the bootsector, so no
+ operating system required.
+Comments:
+ There's a small glitch character appearing in the 17th line that I wish I had
+ time to debug, but I'll have to go with it.
